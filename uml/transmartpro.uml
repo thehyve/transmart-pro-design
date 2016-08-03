@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_X05hcFmKEeapbLO9DeUAbA" name="Transmart Pro">
+  <ownedComment xmi:id="_rZ2ncFmNEeapbLO9DeUAbA" annotatedElement="_X05hcFmKEeapbLO9DeUAbA">
+    <body>REST API clients</body>
+  </ownedComment>
+  <ownedComment xmi:id="_BYvEIFmPEeapbLO9DeUAbA" annotatedElement="_X05hcFmKEeapbLO9DeUAbA">
+    <body>External storage and computation services, linked to in Transmart.</body>
+  </ownedComment>
+  <ownedComment xmi:id="_doKR0FmQEeapbLO9DeUAbA" annotatedElement="_X05hcFmKEeapbLO9DeUAbA _VvYCkFmOEeapbLO9DeUAbA">
+    <body>External ontology service, used during data loading for fetching preferred ontology codes.</body>
+  </ownedComment>
+  <packagedElement xmi:type="uml:Component" xmi:id="_b0KMUFmKEeapbLO9DeUAbA" name="Database">
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_ufpeQFmOEeapbLO9DeUAbA" name="&lt;&lt;dependency>>" client="_b0KMUFmKEeapbLO9DeUAbA" supplier="_lnJMgFmOEeapbLO9DeUAbA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_es1poFmKEeapbLO9DeUAbA" name="TransmartApp">
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_24TIEFmKEeapbLO9DeUAbA" name="&lt;&lt;dependency>>" visibility="package" client="_es1poFmKEeapbLO9DeUAbA" supplier="_b0KMUFmKEeapbLO9DeUAbA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_EAr6oFmLEeapbLO9DeUAbA" name="&lt;&lt;dependency>>" client="_es1poFmKEeapbLO9DeUAbA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_g_ZiIFmKEeapbLO9DeUAbA" name="Core DB">
+    <interfaceRealization xmi:id="_gp1FUFmLEeapbLO9DeUAbA" name="Transmart Core DBToInterface1" client="_g_ZiIFmKEeapbLO9DeUAbA" supplier="_AArB0FmLEeapbLO9DeUAbA" contract="_AArB0FmLEeapbLO9DeUAbA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_HfnfoFmLEeapbLO9DeUAbA" name="&lt;&lt;dependency>>" client="_g_ZiIFmKEeapbLO9DeUAbA" supplier="_b0KMUFmKEeapbLO9DeUAbA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_q6xmIFmKEeapbLO9DeUAbA" name="REST API">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_SdJkMFmLEeapbLO9DeUAbA" name="v1" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_99AZkFmNEeapbLO9DeUAbA" name="v2" aggregation="composite"/>
+    <interfaceRealization xmi:id="_3uLf0FmNEeapbLO9DeUAbA" name="RESTToREST" client="_q6xmIFmKEeapbLO9DeUAbA _SdJkMFmLEeapbLO9DeUAbA" supplier="_0zU4QFmNEeapbLO9DeUAbA" contract="_0zU4QFmNEeapbLO9DeUAbA"/>
+    <interfaceRealization xmi:id="_H6R7AFmOEeapbLO9DeUAbA" name="v2ToAPI v2" client="_q6xmIFmKEeapbLO9DeUAbA _99AZkFmNEeapbLO9DeUAbA" supplier="_Dcs8cFmOEeapbLO9DeUAbA" contract="_Dcs8cFmOEeapbLO9DeUAbA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_FPpoIFmLEeapbLO9DeUAbA" name="&lt;&lt;dependency>>" client="_q6xmIFmKEeapbLO9DeUAbA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_AArB0FmLEeapbLO9DeUAbA" name="Core API"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_1sx6sFmLEeapbLO9DeUAbA" name="Core APIToTransmart REST API" client="_q6xmIFmKEeapbLO9DeUAbA" supplier="_AArB0FmLEeapbLO9DeUAbA"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_Awk_UFmMEeapbLO9DeUAbA" name="Core APIToTransmartApp" client="_es1poFmKEeapbLO9DeUAbA" supplier="_AArB0FmLEeapbLO9DeUAbA"/>
+  <packagedElement xmi:type="uml:Component" xmi:id="_JSD4MFmMEeapbLO9DeUAbA" name="Glowing Bear UI"/>
+  <packagedElement xmi:type="uml:Component" xmi:id="_oWsYcFmNEeapbLO9DeUAbA" name="RClient"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_0zU4QFmNEeapbLO9DeUAbA" name="API v1"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_Dcs8cFmOEeapbLO9DeUAbA" name="API v2"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_LjJfIFmOEeapbLO9DeUAbA" name="API v1ToRClient" client="_oWsYcFmNEeapbLO9DeUAbA" supplier="_0zU4QFmNEeapbLO9DeUAbA"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_MDo9EFmOEeapbLO9DeUAbA" name="API v2ToGlowing Bear UI" client="_JSD4MFmMEeapbLO9DeUAbA" supplier="_Dcs8cFmOEeapbLO9DeUAbA"/>
+  <packagedElement xmi:type="uml:Component" xmi:id="_VvYCkFmOEeapbLO9DeUAbA" name="Ontology Service"/>
+  <packagedElement xmi:type="uml:Component" xmi:id="_cXHLkFmOEeapbLO9DeUAbA" name="Arvados"/>
+  <packagedElement xmi:type="uml:Component" xmi:id="_eZt8gFmOEeapbLO9DeUAbA" name="File Storage"/>
+  <packagedElement xmi:type="uml:Component" xmi:id="_i59NgFmOEeapbLO9DeUAbA" name="Transmart Batch">
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_sQ8yEFmOEeapbLO9DeUAbA" name="&lt;&lt;dependency>>" client="_i59NgFmOEeapbLO9DeUAbA" supplier="_b0KMUFmKEeapbLO9DeUAbA"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_xnDUEFmOEeapbLO9DeUAbA" name="&lt;&lt;dependency>>" client="_i59NgFmOEeapbLO9DeUAbA" supplier="_VvYCkFmOEeapbLO9DeUAbA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_lnJMgFmOEeapbLO9DeUAbA" name="Transmart Data"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_0QSAIFmOEeapbLO9DeUAbA" name="Core APIToTransmart Batch" client="_i59NgFmOEeapbLO9DeUAbA" supplier="_AArB0FmLEeapbLO9DeUAbA"/>
+  <packagedElement xmi:type="uml:Package" xmi:id="_YrxMIFmXEeapbLO9DeUAbA" name="Storage">
+    <packagedElement xmi:type="uml:Class" xmi:id="_Iv92wFmXEeapbLO9DeUAbA" name="System">
+      <ownedAttribute xmi:id="_KN3YIFmXEeapbLO9DeUAbA" name="name" isLeaf="true"/>
+      <ownedAttribute xmi:id="_MHl54FmXEeapbLO9DeUAbA" name="version"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_YFuf0FmXEeapbLO9DeUAbA" name="StorageSource">
+      <ownedAttribute xmi:id="_oXPKAFmYEeapbLO9DeUAbA" name="source_id"/>
+      <ownedAttribute xmi:id="_f2r6sFmXEeapbLO9DeUAbA" name="base_url"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_jc3-QFmXEeapbLO9DeUAbA" name="sourcesToSystems" memberEnd="_jc3-QVmXEeapbLO9DeUAbA _jdK5MlmXEeapbLO9DeUAbA" navigableOwnedEnd="_jdK5MlmXEeapbLO9DeUAbA">
+      <ownedEnd xmi:id="_jdK5MlmXEeapbLO9DeUAbA" name="system" type="_Iv92wFmXEeapbLO9DeUAbA" association="_jc3-QFmXEeapbLO9DeUAbA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_jdb-8FmXEeapbLO9DeUAbA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_jdcmAFmXEeapbLO9DeUAbA" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_jc3-QVmXEeapbLO9DeUAbA" name="sources" type="_YFuf0FmXEeapbLO9DeUAbA" association="_jc3-QFmXEeapbLO9DeUAbA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_jdK5MFmXEeapbLO9DeUAbA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_jdK5MVmXEeapbLO9DeUAbA" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_sYfOYFmXEeapbLO9DeUAbA" name="FileCollectionLink">
+      <ownedAttribute xmi:id="_y4uBMFmXEeapbLO9DeUAbA" name="collection_id"/>
+      <ownedAttribute xmi:id="_xuSOYFmXEeapbLO9DeUAbA" name="name"/>
+      <ownedAttribute xmi:id="_z0GEUFmXEeapbLO9DeUAbA" name="url"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_2XZukFmXEeapbLO9DeUAbA" name="linksToSources" memberEnd="_2XaVoFmXEeapbLO9DeUAbA _2XbjwVmXEeapbLO9DeUAbA" navigableOwnedEnd="_2XaVoFmXEeapbLO9DeUAbA _2XbjwVmXEeapbLO9DeUAbA">
+      <ownedEnd xmi:id="_2XaVoFmXEeapbLO9DeUAbA" name="links" type="_sYfOYFmXEeapbLO9DeUAbA" association="_2XZukFmXEeapbLO9DeUAbA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2Xa8sFmXEeapbLO9DeUAbA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2XbjwFmXEeapbLO9DeUAbA" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_2XbjwVmXEeapbLO9DeUAbA" name="source" type="_YFuf0FmXEeapbLO9DeUAbA" association="_2XZukFmXEeapbLO9DeUAbA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2XcK0FmXEeapbLO9DeUAbA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2XcK0VmXEeapbLO9DeUAbA" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_2_XtgFmXEeapbLO9DeUAbA" name="linksToStudys" memberEnd="_2_XtgVmXEeapbLO9DeUAbA _2_ZisFmXEeapbLO9DeUAbA" navigableOwnedEnd="_2_XtgVmXEeapbLO9DeUAbA _2_ZisFmXEeapbLO9DeUAbA">
+      <ownedEnd xmi:id="_2_XtgVmXEeapbLO9DeUAbA" name="links" type="_sYfOYFmXEeapbLO9DeUAbA" association="_2_XtgFmXEeapbLO9DeUAbA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2_Y7oFmXEeapbLO9DeUAbA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2_Y7oVmXEeapbLO9DeUAbA" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_2_ZisFmXEeapbLO9DeUAbA" name="study" type="_pOxEYFmXEeapbLO9DeUAbA" association="_2_XtgFmXEeapbLO9DeUAbA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2_ZisVmXEeapbLO9DeUAbA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2_aJwFmXEeapbLO9DeUAbA" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_pOxEYFmXEeapbLO9DeUAbA" name="Study">
+    <ownedAttribute xmi:id="_qc6SgFmXEeapbLO9DeUAbA" name="study_id"/>
+    <ownedAttribute xmi:id="_rF16wFmXEeapbLO9DeUAbA" name="name"/>
+  </packagedElement>
+</uml:Model>
