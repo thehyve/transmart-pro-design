@@ -1,0 +1,124 @@
+swagger: "2.0"
+
+info:
+  version: 1.0.0
+  title: TranSMART REST API
+
+basePath: /v2
+schemes:
+  - https
+produces:
+  - application/json
+  - application/vnd.google.protobuf
+consumes:
+  - application/json
+  - application/vnd.google.protobuf
+
+securityDefinitions:
+  oauth:
+    type: oauth2
+    flow: implicit
+    authorizationUrl: ""
+  key:
+    type: apiKey
+    in: header
+    name: access_token
+security:
+  - oauth: []
+  - key: []
+
+parameters:
+  source_id:
+    name: source_id
+    in: path
+    description: The storage source id
+    type: number
+    required: true
+
+paths:
+  # Studies
+  /studies:
+    get:
+      description: Get all `Study` objects.
+      # Expected responses for this operation:
+      responses:
+        # Response code
+        200:
+          description: Successful response
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Study"
+        default:
+          description: Unexpected error
+
+  # Storage sources
+  /storage/supported:
+    get:
+      description: Get all supported storage systems
+      responses:
+        200:
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/StorageSystem"
+  /storage/sources:
+    get:
+      description: Get all storage sources
+      responses:
+        200:
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/StorageSource"
+    post:
+      description: Register a new storage source
+      responses:
+        200:
+          schema:
+            $ref: "#/definitions/StorageSource"
+
+  /storage/sources/{source_id}:
+    parameters:
+      - $ref: "#/parameters/source_id"
+    get:
+      description: Get storage sources
+      responses:
+        200:
+          schema:
+            $ref:"#/definitions/StorageSource"
+    delete:
+      description: Delete storage source
+      responses:
+        200:
+          description: OK
+
+
+definitions:
+  Study:
+    type: object
+    properties:
+      study_id:
+        type: string
+      name:
+        type: string
+
+  StorageSystem:
+    type: object
+    properties:
+      system_id:
+        type: integer
+      name:
+        type: string
+      version:
+        type: string
+
+  StorageSource:
+    type: object
+    properties:
+      source_id:
+        type: integer
+      base_url:
+        type: string
+      system:
+        $ref: "#/definitions/StorageSystem"
