@@ -94,4 +94,126 @@
     <ownedAttribute xmi:id="_qc6SgFmXEeapbLO9DeUAbA" name="study_id"/>
     <ownedAttribute xmi:id="_rF16wFmXEeapbLO9DeUAbA" name="name"/>
   </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_dIZI0GOlEeaHA5nETfI5sw" name="Query">
+    <ownedComment xmi:id="_6BdHYGO8EeaHA5nETfI5sw" annotatedElement="_gYoDIGOoEeaHA5nETfI5sw">
+      <body>AND, OR, NOT.</body>
+    </ownedComment>
+    <packagedElement xmi:type="uml:Class" xmi:id="_gPKsgGOlEeaHA5nETfI5sw" name="DimensionalConstraint">
+      <ownedComment xmi:id="_Q6UjQGPCEeaHA5nETfI5sw" annotatedElement="_gPKsgGOlEeaHA5nETfI5sw">
+        <body>E.g., patient_dimension.patient_num in [123, 456, 789] or concept_dimension.concept_cd LIKE '\Demographic\Age' or patient_dimension.study_id = 'GSE8581'.</body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_iLczAGOlEeaHA5nETfI5sw" name="dimension"/>
+      <ownedAttribute xmi:id="_ksTmMGOlEeaHA5nETfI5sw" name="field"/>
+      <ownedAttribute xmi:id="_lfLNkGOlEeaHA5nETfI5sw" name="type"/>
+      <ownedAttribute xmi:id="_mH1wEGOlEeaHA5nETfI5sw" name="operator"/>
+      <ownedAttribute xmi:id="_nHpAMGOlEeaHA5nETfI5sw" name="value"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_INdxkGOmEeaHA5nETfI5sw" name="ValueConstraint">
+      <ownedComment xmi:id="_9GCgcGPBEeaHA5nETfI5sw" annotatedElement="_INdxkGOmEeaHA5nETfI5sw">
+        <body>E.g., string LIKE &quot;female&quot; or numeric > 20.</body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_INdxk2OmEeaHA5nETfI5sw" name="type"/>
+      <ownedAttribute xmi:id="_INdxlGOmEeaHA5nETfI5sw" name="operator"/>
+      <ownedAttribute xmi:id="_INdxlWOmEeaHA5nETfI5sw" name="value"/>
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_Sfw14GOoEeaHA5nETfI5sw" name="DimensionalQuery">
+        <ownedAttribute xmi:id="_Sfw14WOoEeaHA5nETfI5sw" name="dimension"/>
+        <ownedAttribute xmi:id="_Sfw14mOoEeaHA5nETfI5sw" name="field"/>
+        <ownedAttribute xmi:id="_Sfw142OoEeaHA5nETfI5sw" name="type"/>
+        <ownedAttribute xmi:id="_Sfw15GOoEeaHA5nETfI5sw" name="operator"/>
+        <ownedAttribute xmi:id="_Sfw15WOoEeaHA5nETfI5sw" name="value"/>
+      </nestedClassifier>
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_TiqdUGOoEeaHA5nETfI5sw" name="ValueConstraint">
+        <ownedAttribute xmi:id="_TiqdUWOoEeaHA5nETfI5sw" name="type"/>
+        <ownedAttribute xmi:id="_TiqdUmOoEeaHA5nETfI5sw" name="operator"/>
+        <ownedAttribute xmi:id="_TiqdU2OoEeaHA5nETfI5sw" name="value"/>
+      </nestedClassifier>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_Oj1L0GOoEeaHA5nETfI5sw" name="Constraint"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_VeiUIGOoEeaHA5nETfI5sw" name="TimeConstraint">
+      <ownedComment xmi:id="_2pc3gGPBEeaHA5nETfI5sw" annotatedElement="_VeiUIGOoEeaHA5nETfI5sw">
+        <body>E.g., between 01-01-2014 and 31-12-2015.</body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_XgI_gGOoEeaHA5nETfI5sw" name="field"/>
+      <ownedAttribute xmi:id="_aZADAGOoEeaHA5nETfI5sw" name="operator"/>
+      <ownedAttribute xmi:id="_bT3v0GOoEeaHA5nETfI5sw" name="values"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_gYoDIGOoEeaHA5nETfI5sw" name="Combination">
+      <ownedAttribute xmi:id="_jqVEcGOoEeaHA5nETfI5sw" name="operator"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_nu8wcGOoEeaHA5nETfI5sw" name="combinationsToConstraints" memberEnd="_nu8wcWOoEeaHA5nETfI5sw _nu9XgmOoEeaHA5nETfI5sw" navigableOwnedEnd="_nu8wcWOoEeaHA5nETfI5sw _nu9XgmOoEeaHA5nETfI5sw">
+      <ownedEnd xmi:id="_nu8wcWOoEeaHA5nETfI5sw" name="combinations" type="_gYoDIGOoEeaHA5nETfI5sw" association="_nu8wcGOoEeaHA5nETfI5sw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_nu9XgGOoEeaHA5nETfI5sw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_nu9XgWOoEeaHA5nETfI5sw" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_nu9XgmOoEeaHA5nETfI5sw" name="constraints" type="_Oj1L0GOoEeaHA5nETfI5sw" association="_nu8wcGOoEeaHA5nETfI5sw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_nu9-kGOoEeaHA5nETfI5sw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_nu-loGOoEeaHA5nETfI5sw" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Abstraction" xmi:id="_35cpIGOoEeaHA5nETfI5sw" client="_VeiUIGOoEeaHA5nETfI5sw" supplier="_Oj1L0GOoEeaHA5nETfI5sw"/>
+    <packagedElement xmi:type="uml:Abstraction" xmi:id="_41VpoGOoEeaHA5nETfI5sw" client="_INdxkGOmEeaHA5nETfI5sw" supplier="_Oj1L0GOoEeaHA5nETfI5sw"/>
+    <packagedElement xmi:type="uml:Abstraction" xmi:id="_5densGOoEeaHA5nETfI5sw" client="_gPKsgGOlEeaHA5nETfI5sw" supplier="_Oj1L0GOoEeaHA5nETfI5sw"/>
+    <packagedElement xmi:type="uml:Abstraction" xmi:id="_6GHVAGOoEeaHA5nETfI5sw" client="_gYoDIGOoEeaHA5nETfI5sw" supplier="_Oj1L0GOoEeaHA5nETfI5sw"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_7g1mkGOoEeaHA5nETfI5sw" name="ObservationQuery">
+      <ownedComment xmi:id="__zZ34GO8EeaHA5nETfI5sw" annotatedElement="_7g1mkGOoEeaHA5nETfI5sw">
+        <body>Queries for observations or aggregated data.</body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_Iy8lwGO9EeaHA5nETfI5sw" name="aggregators"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="__U0OgGOoEeaHA5nETfI5sw" name="querysToConstraints" memberEnd="__U01kGOoEeaHA5nETfI5sw __U1comOoEeaHA5nETfI5sw" navigableOwnedEnd="__U01kGOoEeaHA5nETfI5sw __U1comOoEeaHA5nETfI5sw">
+      <ownedEnd xmi:id="__U01kGOoEeaHA5nETfI5sw" name="queries" type="_7g1mkGOoEeaHA5nETfI5sw" association="__U0OgGOoEeaHA5nETfI5sw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__U1coGOoEeaHA5nETfI5sw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__U1coWOoEeaHA5nETfI5sw" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="__U1comOoEeaHA5nETfI5sw" name="constraints" type="_Oj1L0GOoEeaHA5nETfI5sw" association="__U0OgGOoEeaHA5nETfI5sw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__U2DsGOoEeaHA5nETfI5sw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__U2DsWOoEeaHA5nETfI5sw" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_nbG3UGO8EeaHA5nETfI5sw" name="TemporalConstraint">
+      <ownedComment xmi:id="_gwqtsGO-EeaHA5nETfI5sw" annotatedElement="_nbG3UGO8EeaHA5nETfI5sw">
+        <body>Comparison with other events. Operators: before or after first or last occurence.</body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_o8bgIGO8EeaHA5nETfI5sw" name="operator"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_tm8HcGO8EeaHA5nETfI5sw" name="temporalConstraintsToQuerys" memberEnd="_tm8HcWO8EeaHA5nETfI5sw _tm8ugGO8EeaHA5nETfI5sw" navigableOwnedEnd="_tm8HcWO8EeaHA5nETfI5sw _tm8ugGO8EeaHA5nETfI5sw">
+      <ownedEnd xmi:id="_tm8HcWO8EeaHA5nETfI5sw" name="temporalConstraints" type="_nbG3UGO8EeaHA5nETfI5sw" association="_tm8HcGO8EeaHA5nETfI5sw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_tm8HcmO8EeaHA5nETfI5sw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_tm8Hc2O8EeaHA5nETfI5sw" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_tm8ugGO8EeaHA5nETfI5sw" name="eventQueries" type="_7g1mkGOoEeaHA5nETfI5sw" association="_tm8HcGO8EeaHA5nETfI5sw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_tm8ugWO8EeaHA5nETfI5sw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_tm8ugmO8EeaHA5nETfI5sw" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Abstraction" xmi:id="_12lpcGO8EeaHA5nETfI5sw" client="_nbG3UGO8EeaHA5nETfI5sw" supplier="_Oj1L0GOoEeaHA5nETfI5sw"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_4ZqYQGO-EeaHA5nETfI5sw" name="PatientQuery">
+      <ownedComment xmi:id="_NtvZ4GO_EeaHA5nETfI5sw" annotatedElement="_4ZqYQGO-EeaHA5nETfI5sw">
+        <body>Query patients for which certain observations exists.</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_7eI14GO-EeaHA5nETfI5sw" name="observationQuerysToPatientQuerys" memberEnd="_7eI14WO-EeaHA5nETfI5sw _7eJc8mO-EeaHA5nETfI5sw" navigableOwnedEnd="_7eI14WO-EeaHA5nETfI5sw _7eJc8mO-EeaHA5nETfI5sw">
+      <ownedEnd xmi:id="_7eI14WO-EeaHA5nETfI5sw" name="observationsQuery" type="_7g1mkGOoEeaHA5nETfI5sw" association="_7eI14GO-EeaHA5nETfI5sw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7eJc8GO-EeaHA5nETfI5sw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7eJc8WO-EeaHA5nETfI5sw" value="1"/>
+      </ownedEnd>
+      <ownedEnd xmi:id="_7eJc8mO-EeaHA5nETfI5sw" name="patientQueries" type="_4ZqYQGO-EeaHA5nETfI5sw" association="_7eI14GO-EeaHA5nETfI5sw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7eJc82O-EeaHA5nETfI5sw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7eJc9GO-EeaHA5nETfI5sw" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_kGPssGReEearubB7L67JUQ" name="RelativeTimeConstraint">
+      <ownedComment xmi:id="_lnm8UGRfEearubB7L67JUQ" annotatedElement="_kGPssGReEearubB7L67JUQ">
+        <body>Modifiers are used to encode relative times such as weeks or visits.</body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_RBfz8GRfEearubB7L67JUQ" name="modifier_code"/>
+      <ownedAttribute xmi:id="_Vjk4AGRfEearubB7L67JUQ" name="operator"/>
+      <ownedAttribute xmi:id="_Wud90GRfEearubB7L67JUQ" name="values"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Abstraction" xmi:id="_8NPscGRfEearubB7L67JUQ" client="_kGPssGReEearubB7L67JUQ" supplier="_Oj1L0GOoEeaHA5nETfI5sw"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mHAH4GR8EeaT07v_w64UUg" name="PatientSetConstraint">
+      <ownedAttribute xmi:id="_perOUGR8EeaT07v_w64UUg" name="patientSet"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Abstraction" xmi:id="_KkLPkGR9EeaT07v_w64UUg" client="_mHAH4GR8EeaT07v_w64UUg" supplier="_Oj1L0GOoEeaHA5nETfI5sw"/>
+  </packagedElement>
 </uml:Model>
